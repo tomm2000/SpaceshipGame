@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://dqqrgt1xdwang"]
+
+[ext_resource type="Script" path="res://World.cs" id="1_ndlrg"]
+[ext_resource type="PackedScene" uid="uid://c4ffyq2hh46j2" path="res://Entities/Spaceships/Basic/BasicSpaceship.tscn" id="2_bc85t"]
+[ext_resource type="PackedScene" uid="uid://cajm1vptg6jqs" path="res://World/Paper/PaperBackground.tscn" id="3_68753"]
+[ext_resource type="PackedScene" uid="uid://cancermatdb8q" path="res://Entities/Asteroids/Asteroid.tscn" id="3_dcm4c"]
+[ext_resource type="LabelSettings" uid="uid://ci7fjfx52w3gd" path="res://LabelSettings.tres" id="5_jkue7"]
+
+[node name="World" type="Node" node_paths=PackedStringArray("FPSLabel", "PositionLabel", "Player")]
+script = ExtResource("1_ndlrg")
+FPSLabel = NodePath("CanvasLayer/MarginContainer/VBoxContainer/FPSLabel")
+PositionLabel = NodePath("CanvasLayer/MarginContainer/VBoxContainer/PositionLabel")
+AsteroidScene = ExtResource("3_dcm4c")
+Player = NodePath("BasicSpaceship")
+
+[node name="BasicSpaceship" parent="." instance=ExtResource("2_bc85t")]
+
+[node name="SpaceBackground" parent="." instance=ExtResource("3_68753")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 76.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+
+[node name="FPSLabel" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+label_settings = ExtResource("5_jkue7")
+
+[node name="PositionLabel" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+label_settings = ExtResource("5_jkue7")

@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://7svq6dqr1uxh"]
+
+[ext_resource type="Script" path="res://Entities/Bullets/Basic/BasicBullet.cs" id="1_kiola"]
+[ext_resource type="Texture2D" uid="uid://btjt2gwm0u5xs" path="res://Entities/Bullets/Basic/BasicBullet.png" id="2_gruj1"]
+[ext_resource type="PackedScene" uid="uid://dspi126gb4jav" path="res://Entities/Components/HurtBoxComponent.tscn" id="3_2jevl"]
+[ext_resource type="PackedScene" uid="uid://c210yfumn0wek" path="res://Entities/Components/DeathComponent.tscn" id="4_k2awo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2831r"]
+size = Vector2(20, 4)
+
+[node name="Bullet" type="Node2D" node_paths=PackedStringArray("LifespanTimer")]
+script = ExtResource("1_kiola")
+LifespanTimer = NodePath("Lifespan")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_gruj1")
+
+[node name="Lifespan" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("DeathComponent") instance=ExtResource("3_2jevl")]
+DeathComponent = NodePath("../DeathComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
+shape = SubResource("RectangleShape2D_2831r")
+
+[node name="DeathComponent" parent="." instance=ExtResource("4_k2awo")]

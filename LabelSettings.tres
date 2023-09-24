@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://ci7fjfx52w3gd"]
+
+[ext_resource type="FontFile" uid="uid://ca7mcdkfbot84" path="res://Virgil.woff2" id="1_d1ela"]
+
+[resource]
+font = ExtResource("1_d1ela")
+font_size = 20
+font_color = Color(0, 0, 0, 1)

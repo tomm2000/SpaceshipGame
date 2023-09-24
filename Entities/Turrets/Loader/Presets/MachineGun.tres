@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://hnjudjb51pl3"]
+
+[ext_resource type="Script" path="res://Entities/Turrets/Loader/BasicLoader/BasicLoader.cs" id="1_4jmo5"]
+
+[resource]
+script = ExtResource("1_4jmo5")
+RefreshRate = 0
+ReloadRate = 10
+BurstSize = 1
+ForceBurstComplete = false

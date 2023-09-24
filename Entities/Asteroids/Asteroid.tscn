@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://cancermatdb8q"]
+
+[ext_resource type="Script" path="res://Entities/Asteroids/Asteroid.cs" id="1_chjqo"]
+[ext_resource type="PackedScene" uid="uid://cwvbu1bngarpd" path="res://Entities/Components/HitBoxComponent.tscn" id="1_p0du8"]
+[ext_resource type="Texture2D" uid="uid://pw3cmtijbr2j" path="res://Entities/Asteroids/Asteroid.png" id="2_xn381"]
+[ext_resource type="PackedScene" uid="uid://bvus02w1g5c4g" path="res://Entities/Components/LifeComponent.tscn" id="3_g7ti8"]
+[ext_resource type="PackedScene" uid="uid://c210yfumn0wek" path="res://Entities/Components/DeathComponent.tscn" id="4_vb0ul"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_73leb"]
+radius = 56.5685
+
+[node name="Asteroid" type="Node2D"]
+script = ExtResource("1_chjqo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_xn381")
+
+[node name="LifeComponent" parent="." instance=ExtResource("3_g7ti8")]
+MaxHealth = 40
+Health = 40
+
+[node name="DeathComponent" parent="." node_paths=PackedStringArray("LifeComponent") instance=ExtResource("4_vb0ul")]
+LifeComponent = NodePath("../LifeComponent")
+
+[node name="HitBoxComponent" parent="." node_paths=PackedStringArray("LifeComponent") instance=ExtResource("1_p0du8")]
+LifeComponent = NodePath("../LifeComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
+shape = SubResource("CircleShape2D_73leb")

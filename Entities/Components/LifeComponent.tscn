@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvus02w1g5c4g"]
+
+[ext_resource type="Script" path="res://Entities/Components/LifeComponent.cs" id="1_hdgq7"]
+
+[node name="LifeComponent" type="Node2D"]
+script = ExtResource("1_hdgq7")

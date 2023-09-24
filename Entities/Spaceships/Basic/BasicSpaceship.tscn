@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://c4ffyq2hh46j2"]
+
+[ext_resource type="Script" path="res://Entities/Spaceships/Basic/BasicSpaceship.cs" id="1_hvk5j"]
+[ext_resource type="Texture2D" uid="uid://c5vxx5jgrhfsj" path="res://Entities/Spaceships/Basic/Thrust.png" id="2_7b2c8"]
+[ext_resource type="Texture2D" uid="uid://cdktrp2m4lntw" path="res://Entities/Spaceships/Basic/BasicSpaceship.png" id="3_nd27c"]
+[ext_resource type="PackedScene" uid="uid://b4uyur8gxlksr" path="res://Entities/Turrets/Basic/BasicTurret.tscn" id="4_ujvp7"]
+[ext_resource type="PackedScene" uid="uid://1654218er0kf" path="res://Stuff/Camera/ZoomCamera2D.tscn" id="5_ppiy0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vqi5e"]
+radius = 17.0
+height = 182.0
+
+[node name="BasicSpaceship" type="CharacterBody2D" node_paths=PackedStringArray("ThrustSprite")]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_hvk5j")
+ThrustSprite = NodePath("ThurstSprite")
+
+[node name="ThurstSprite" type="Sprite2D" parent="."]
+position = Vector2(-113, 2)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_7b2c8")
+
+[node name="MainSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_nd27c")
+
+[node name="BasicTurret" parent="." instance=ExtResource("4_ujvp7")]
+position = Vector2(-50, 0)
+
+[node name="BasicTurret2" parent="." instance=ExtResource("4_ujvp7")]
+position = Vector2(21, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_vqi5e")
+
+[node name="ZoomCamera2D" parent="." instance=ExtResource("5_ppiy0")]
